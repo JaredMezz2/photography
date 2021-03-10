@@ -1,0 +1,43 @@
+<%- include('partials/head')%>
+<div class="container">
+    <h1>Home Page</h1>
+    <p>Where my main stuff goes</p>
+
+    <h2>Contact me</h2>
+    <form action="/contact" name="submit" method="POST" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label class="form-label" for="name">Name: </label>
+            <input type="text" id="name" name="name" placeholder="John" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="email">Email: </label>
+            <input type="email" id="email" name="email" placeholder="me@google.com" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="message">Message: </label>
+            <textarea name="message" id="message" cols="30" rows="10" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-block btn-success">Submit</button>
+    </form>
+</div>
+<%- include('partials/foot')%>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+
+        const forms = document.querySelectorAll('.needs-validation')
+
+        Array.from(forms).forEach(function(form) {
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })();
+</script>

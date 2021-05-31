@@ -1,4 +1,6 @@
 <%- include('partials/head')%>
+<%- include('partials/navbar')%>
+<%- include('partials/plateSearch')%>
 <div class="container">
     <h1>Home Page</h1>
     <p>Where my main stuff goes</p>
@@ -19,25 +21,15 @@
         </div>
         <button type="submit" class="btn btn-block btn-success">Submit</button>
     </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>hi</h1>
 </div>
 <%- include('partials/foot')%>
 
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-        'use strict';
-
-        const forms = document.querySelectorAll('.needs-validation')
-
-        Array.from(forms).forEach(function(form) {
-            form.addEventListener('submit', function(event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })();
-</script>
+<script src="../js/bootstrapValidation.js"></script>

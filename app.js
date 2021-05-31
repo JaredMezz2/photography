@@ -23,11 +23,14 @@ app.get("/", (req, res) => {
 const shootRoutes = require('./routes/shoot');
 app.use('/shoot', shootRoutes);
 
+app.get('/gallery', async(req, res) => {
+    res.render('gallery')
+})
+
 app.post("/contact", async(req, res) => {
     console.log(req.body);
     res.redirect("/");
 })
-
 
 
 app.listen(3000, function() {

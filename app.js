@@ -20,13 +20,29 @@ app.get("/", (req, res) => {
 })
 
 // shoot report routing
-const shootRoutes = require('./routes/shoot');
-app.use('/shoot', shootRoutes);
+// const shootRoutes = require('./routes/shoot');
+// app.use('/shoot', shootRoutes);
 
-app.get('/gallery', async(req, res) => {
-    res.render('gallery')
+// Shoots - INDEX ROUTE
+// Show all shoots
+app.get('/shoots', async(req, res) => {
+    res.render('shoots/index');
 })
 
+// Shoots - SHOW ROUTE
+// Show details of specific shoot
+app.get('/shoots/:id', async(req, res) => {
+    // grab id from URL
+    const { id } = req.params;
+
+    // find shoot in db
+
+    // render corresponding page with passed in shoot
+    res.render('shoots/details', { id })
+})
+
+// Contact - CREATE ROUTE
+// Receive contact form info
 app.post("/contact", async(req, res) => {
     console.log(req.body);
     res.redirect("/");

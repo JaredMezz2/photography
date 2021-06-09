@@ -1,26 +1,39 @@
 <%- include('partials/head')%>
 <%- include('partials/navbar')%>
 <%- include('partials/plateSearch')%>
-<div class="container">
-    <h1>Home Page</h1>
-    <p>Where my main stuff goes</p>
+<div class="container-fluid">
+    <!-- Header Photo Section -->
+    <div class="row">
+        <h1>Home Page</h1>
+        <p>Where my main stuff goes</p>
+    </div>
+    <!-- Contact Section -->
+    <div class="row">
+        <h2>Contact me</h2>
+        <form action="/contact" name="submit" method="POST" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label class="form-label" for="name">Name: </label>
+                <input type="text" id="name" name="name" placeholder="John" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="email">Email: </label>
+                <input type="email" id="email" name="email" placeholder="me@google.com" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="message">Message: </label>
+                <textarea name="message" id="message" cols="30" rows="10" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-block btn-success">Submit</button>
+        </form>
+    </div>
 
-    <h2>Contact me</h2>
-    <form action="/contact" name="submit" method="POST" class="needs-validation" novalidate>
-        <div class="form-group">
-            <label class="form-label" for="name">Name: </label>
-            <input type="text" id="name" name="name" placeholder="John" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="email">Email: </label>
-            <input type="email" id="email" name="email" placeholder="me@google.com" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="message">Message: </label>
-            <textarea name="message" id="message" cols="30" rows="10" class="form-control" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-block btn-success">Submit</button>
-    </form>
+    <!-- Gallery -->
+    <div class="row">
+        <h1>Gallery</h1>
+    </div>
+
+
+
     <br>
     <br>
     <br>

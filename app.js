@@ -29,6 +29,16 @@ app.get('/shoots', async(req, res) => {
     res.render('shoots/index');
 })
 
+// Shoots - SEARCH ROUTE
+// Receiving form submission to search for specific route
+app.post('/shoots', async(req, res) => {
+    // Extract plate searched on form from request body
+    const { enteredPlate } = req.body;
+
+    // redirect to specific shoot page
+    res.redirect(`/shoots/${ enteredPlate }`);
+})
+
 // Shoots - SHOW ROUTE
 // Show details of specific shoot
 app.get('/shoots/:id', async(req, res) => {

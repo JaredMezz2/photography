@@ -4,3 +4,37 @@ html, body {
     margin: 0 0;
     padding: 0 0;
 }
+
+.headerImages {
+    height: 75vh;
+}
+
+.imageDisplay {
+    padding: 0;
+}
+
+.imageGallary {
+    padding: 1vh;
+}
+
+.carousel-caption-inside {
+    bottom: 50%;
+}
+
+.carousel-caption-outside {
+    bottom: 50%;
+    top: 50%;
+}
+
+.carousel-caption-mobile {
+    bottom: 50%;
+    top: 30%;
+}
+
+.footer {
+    background: black;
+}
+
+#contact {
+    padding: 4vh;
+}

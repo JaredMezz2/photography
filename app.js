@@ -1,3 +1,8 @@
+// Dev mode, include hidden variables
+if(process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
+}
+
 const express = require('express');
 const app = express();
 
@@ -15,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 // pass in body as json on each request
 app.use(express.json());
 
+// Home - INDEX ROUTE
+// Display the home page
 app.get("/", (req, res) => {
     res.render('home');
 })
@@ -58,7 +65,7 @@ app.post("/contact", async(req, res) => {
     res.redirect("/");
 })
 
-
+// Start the server
 app.listen(3000, function() {
     console.log("Server listening on Port 3000");
 })

@@ -4,44 +4,69 @@
 <div class="container-fluid">
     <!-- Header Photo Section -->
     <div class="row">
-        <h1>Home Page</h1>
-        <p>Where my main stuff goes</p>
+        <!-- Single Photo for mobile Devices -->
+        <div class="d-lg-none">
+            <div class="row">
+                <div class="col imageDisplay">
+                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto,l_white25,w_1.0,h_1.0,fl_relative/v1623205734/frontSideShot_r9bvlm.png" class="img-fluid" alt="">
+                </div>
+                <h1 class="carousel-caption carousel-caption-mobile">Jareds Photography</h1>
+            </div>
+        </div>
+
+        <!-- Double Photo for Desktop Devices -->
+        <div class="d-none d-lg-inline">
+            <div class="row">
+                <div class="col imageDisplay">
+                    <!-- With a white overlay -->
+                    <!-- <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto,l_white25,w_1.0,h_1.0,fl_relative/v1623205735/DSC_0009_zuerd1.png" class="img-fluid" alt="">-->
+                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0009_zuerd1.png" class="img-fluid" alt="">
+                </div>
+                <div class="col imageDisplay">
+                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0132_uriqwf.png" class='img-fluid' alt="">
+                </div>
+            </div>
+            <h1 class="carousel-caption carousel-caption-outside">Jareds Photography</h1>
+        </div>
     </div>
     <!-- Contact Section -->
     <div class="row" id="contact">
-        <h2>Contact me</h2>
-        <form action="/contact" name="submit" method="POST" class="needs-validation" novalidate>
-            <div class="form-group">
-                <label class="form-label" for="name">Name: </label>
-                <input type="text" id="name" name="name" placeholder="John" class="form-control" required>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-3"></div>
+                <div class="col-md-12 col-lg-6">
+                    <h2>Setup a Shoot</h2>
+                    <form action="/contact" name="submit" method="POST" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label class="form-label" for="name">Name: </label>
+                            <input type="text" id="name" name="name" placeholder="John" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email: </label>
+                            <input type="email" id="email" name="email" placeholder="me@google.com" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message: </label>
+                            <textarea name="message" id="message" cols="30" rows="10" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-success">Submit</button>
+                    </form>
+                </div>
+                <div class="col-md-12 col-lg-3"></div>
             </div>
-            <div class="form-group">
-                <label class="form-label" for="email">Email: </label>
-                <input type="email" id="email" name="email" placeholder="me@google.com" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="message">Message: </label>
-                <textarea name="message" id="message" cols="30" rows="10" class="form-control" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-block btn-success">Submit</button>
-        </form>
+
+        </div>
+
     </div>
 
     <!-- Gallery -->
     <div class="row">
-        <h1>Gallery</h1>
+        <div class="col imageDisplay">
+            <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/sidemirror_qgngpb.png" class='img-fluid' alt="">
+            <h1 class="carousel-caption carousel-caption-inside"><a href="/shoots">View All Shoots</a></h1>
+        </div>
+
     </div>
-
-
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1>hi</h1>
 </div>
 <%- include('partials/foot')%>
 

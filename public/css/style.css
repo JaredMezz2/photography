@@ -38,3 +38,8 @@ html, body {
 #contact {
     padding: 4vh;
 }
+
+.plateSearch {
+    background: black;
+    color: white;
+}

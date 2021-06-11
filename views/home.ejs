@@ -10,7 +10,10 @@
                 <div class="col imageDisplay">
                     <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/frontSideShot_r9bvlm.png" class="img-fluid" alt="">
                 </div>
-                <h1 class="carousel-caption carousel-caption-mobile">Jareds Photography</h1>
+                <div class="carousel-caption carousel-caption-mobile">
+                    <h1 class="styledText mainText negOffset botMargin">MEZZ</h1>
+                    <h1 class="styledText mainText offset">SHOTS</h1>
+                </div>
             </div>
         </div>
 
@@ -26,44 +29,22 @@
                     <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0132_uriqwf.png" class='img-fluid' alt="">
                 </div>
             </div>
-            <h1 class="carousel-caption carousel-caption-outside">Jareds Photography</h1>
+            <div class="carousel-caption">
+                <h1 class="styledText mainText negOffset botMargin">MEZZ</h1>
+                <h1 class="styledText mainText offset">SHOTS</h1>
+            </div>
+<!--            <h1 class="carousel-caption carousel-caption-outside styledText pb-5">MEZZ</h1>-->
+<!--            <h1 class="carousel-caption carousel-caption-outside styledText pt-5">SHOTS</h1>-->
         </div>
     </div>
     <!-- Contact Section -->
-    <div class="row" id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-3"></div>
-                <div class="col-md-12 col-lg-6">
-                    <h2>Setup a Shoot</h2>
-                    <form action="/contact" name="submit" method="POST" class="needs-validation" novalidate>
-                        <div class="form-group">
-                            <label class="form-label" for="name">Name: </label>
-                            <input type="text" id="name" name="name" placeholder="John" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="email">Email: </label>
-                            <input type="email" id="email" name="email" placeholder="me@google.com" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="message">Message: </label>
-                            <textarea name="message" id="message" cols="30" rows="10" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-block btn-success">Submit</button>
-                    </form>
-                </div>
-                <div class="col-md-12 col-lg-3"></div>
-            </div>
-
-        </div>
-
-    </div>
+    <%- include('partials/contact')%>
 
     <!-- Gallery -->
     <div class="row">
         <div class="col imageDisplay">
             <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/sidemirror_qgngpb.png" class='img-fluid' alt="">
-            <h1 class="carousel-caption carousel-caption-inside"><a href="/shoots">View All Shoots</a></h1>
+            <h1 class="carousel-caption carousel-caption-inside styledText mainText"><a href="/shoots">View All Shoots</a></h1>
         </div>
 
     </div>

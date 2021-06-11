@@ -1,8 +1,25 @@
+@import url(//db.onlinewebfonts.com/c/9b6ea01638fd252fe935acad72ebb914?family=SignPainter-HouseScript);
+
+@font-face {
+    font-family: "SignPainter-HouseScript";
+    src: url("//db.onlinewebfonts.com/t/9b6ea01638fd252fe935acad72ebb914.eot");
+    src: url("//db.onlinewebfonts.com/t/9b6ea01638fd252fe935acad72ebb914.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/9b6ea01638fd252fe935acad72ebb914.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/9b6ea01638fd252fe935acad72ebb914.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/9b6ea01638fd252fe935acad72ebb914.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/9b6ea01638fd252fe935acad72ebb914.svg#SignPainter-HouseScript") format("svg");
+}
+
+
+:root {
+    --fancyText: "SignPainter-Housescript", sans-serif;
+}
+
 html, body {
-    height: 100%;
     width: 100%;
     margin: 0 0;
     padding: 0 0;
+    scroll-behavior: smooth;
 }
 
 .headerImages {
@@ -35,6 +52,10 @@ html, body {
     background: black;
 }
 
+nav .navbar-brand {
+    font-size: 2em;
+}
+
 #contact {
     padding: 4vh;
 }
@@ -42,4 +63,37 @@ html, body {
 .plateSearch {
     background: black;
     color: white;
+}
+
+.styledText {
+    font-family: var(--fancyText);
+    -webkit-text-stroke: 1px black;
+    margin: 0;
+}
+
+.mainText {
+    font-size: 150px;
+    text-shadow: 0px 30px 3px rgba(0,0,0,0.16);
+}
+
+.botMargin {
+    margin-bottom: -95px;
+}
+
+.offset {
+    padding-left: 120px;
+}
+
+.negOffset {
+    padding-right: 150px;
+}
+
+a {
+    color: inherit;
+    transition: 1s fade;
+}
+
+a:hover,
+a:focus {
+    color: #bfbfbf;
 }

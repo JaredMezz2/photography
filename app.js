@@ -1,10 +1,14 @@
 // Dev mode, include hidden variables
-// if(process.env.NODE_ENV !== "production") {
-//     require("dotenv").config();
-// }
+if(process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
+}
 
 const express = require('express');
 const app = express();
+
+// Database setup
+const connectDB = require('./Database/Connection')
+connectDB();
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -30,6 +34,9 @@ app.get("/", (req, res) => {
 // const shootRoutes = require('./routes/shoot');
 // app.use('/shoot', shootRoutes);
 
+const Shoot = require("./views/models/shoot");
+const Photo = require("./views/models/photo");
+
 // Shoots - INDEX ROUTE
 // Show all shoots
 app.get('/shoots', async(req, res) => {
@@ -53,6 +60,8 @@ app.get('/shoots/:id', async(req, res) => {
     const { id } = req.params;
 
     // find shoot in db
+    const foundShoot = await Shoot.findOne({'plate': id}); // passing in creator field from
+
 
     // render corresponding page with passed in shoot
     res.render('shoots/details', { id })

@@ -9,7 +9,7 @@ const shootSchema = new mongoose.Schema({
         required: true
     },
     date: {
-        type: Date
+        type: String
     },
     photos: [photoSchema]
 })

@@ -37,20 +37,112 @@ app.get("/", (req, res) => {
 const Shoot = require("./views/models/shoot");
 const Photo = require("./views/models/photo");
 
+const tempShoots = [
+    {
+        plate: "CEVE715",
+        date: "2021-02-02",
+        photos: [
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/q_auto/v1623205735/DSC_0009_zuerd1.png",
+                filename: "backQuarter"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/q_auto/v1623205735/DSC_0132_uriqwf.png",
+                filename: "frontShot"
+            }
+        ]
+    },
+    {
+        plate: "CLVZ594",
+        date: "2021-05-16",
+        photos: [
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/q_auto/v1625421684/CLVZ594/oq9y3vts1sojwuhzb9dc.png",
+                filename: "test1"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/q_auto/v1625421683/CLVZ594/nafmnceldj031kebrg12.png",
+                filename: "test2",
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/q_auto/v1625421670/CLVZ594/emut7h8vvx3cexqgg4mi.png",
+                filename: "test3"
+            }
+        ]
+    },
+    {
+        plate: "CRDB744",
+        date: "2021-09-27",
+        photos: [
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/v1633401777/CRDB744/t5hbmmlpcjklekstqve6.jpg",
+                filename: "test1"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/v1633401777/CRDB744/gtk9d9babgw4kzktco8i.jpg",
+                filename: "test2",
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/v1633401777/CRDB744/n6dlev0xj2yb8as0vpro.jpg",
+                filename: "test3"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/v1633401777/CRDB744/imniqb28dfaawjetm33y.jpg",
+                filename: "test3"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/v1633401771/CRDB744/w6zyvn5wb2p43by8nzoe.jpg",
+                filename: "test3"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/v1633401771/CRDB744/ftivrgxnkyuy0cvmypk2.jpg",
+                filename: "test3"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/v1633401771/CRDB744/njoycorgs4ekrgr3owky.jpg",
+                filename: "test3"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/v1633401771/CRDB744/blilovnghkucnugxupgg.jpg",
+                filename: "test3"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/v1633401771/CRDB744/cthuwytwyvamqqmdepsi.jpg",
+                filename: "test3"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/v1633401772/CRDB744/pmh3q8granscxqs39tmz.jpg",
+                filename: "test3"
+            },
+
+        ]
+    }
+]
+
 // Shoots - INDEX ROUTE
 // Show all shoots
 app.get('/shoots', async(req, res) => {
-    res.render('shoots/index');
+    res.render('shoots/index', { tempShoots });
 })
 
 // Shoots - SEARCH ROUTE
 // Receiving form submission to search for specific route
 app.post('/shoots', async(req, res) => {
     // Extract plate searched on form from request body
-    const { enteredPlate } = req.body;
+    let { enteredPlate } = req.body;
+    enteredPlate = enteredPlate.toUpperCase();
 
-    // redirect to specific shoot page
-    res.redirect(`/shoots/${ enteredPlate }`);
+    // check to see if plate is found in a past shoot
+    let foundShootIndex = tempShoots.findIndex(x => x.plate === enteredPlate);
+
+    // if the plate is found in a shoot (returns value other than -1)
+    if (foundShootIndex !== -1) {
+        console.log("found shoot @ ", foundShootIndex);
+        res.redirect(`/shoots/${ enteredPlate }`);
+    } else {
+        console.log('no shoots found');
+        res.render('shoots/setupShoot')
+    }
 })
 
 // Shoots - SHOW ROUTE
@@ -60,11 +152,12 @@ app.get('/shoots/:id', async(req, res) => {
     const { id } = req.params;
 
     // find shoot in db
-    const foundShoot = await Shoot.findOne({'plate': id}); // passing in creator field from
+    // const foundShoot = await Shoot.findOne({'plate': id}); // passing in creator field from
 
+    const foundShoot = tempShoots[tempShoots.findIndex(x => x.plate === id)];
 
     // render corresponding page with passed in shoot
-    res.render('shoots/details', { id })
+    res.render('shoots/details', { foundShoot })
 })
 
 // Contact - CREATE ROUTE

@@ -1,8 +1,39 @@
 <%- include('../partials/head')%>
 <%- include('../partials/navbar')%>
-<div class="container">
-    <h1>Custom page for their uploaded photos</h1>
-    <h2> ID : <%= id %> </h2>
-    <h3>to be uploaded...</h3>
+<%- include('../partials/plateSearch')%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Plate: <%= foundShoot.plate %></h1>
+            <h3>Date: <%= foundShoot.date %></h3>
+        </div>
+    </div>
+    <div class="row photoRow">
+        <div class="photoColumns">
+
+        </div>
+    </div>
+    <!-- Mobile Formatting -->
+    <div class="d-lg-none">
+        <div class="row">
+            <% foundShoot.photos.forEach (photo => { %>
+                <div class="col-12">
+                    <img class="img-fluid" src="<%= photo.url %>" alt="Card image cap">
+                </div>
+            <% }) %>
+        </div>
+    </div>
+    <!-- Desktop Formatting -->
+    <div class="d-none d-lg-block">
+        <div class="row photoRow">
+            <% foundShoot.photos.forEach ((photo, index) => { %>
+                <% if (index % 2 === 0) { %>
+                    <img src="<%= photo.url %>" alt="" class="photoLeft">
+                <% } else { %>
+                    <img src="<%= photo.url %>" alt="" class="photoRight">
+                <% } %>
+            <% }) %>
+        </div>
+    </div>
 </div>
 <%- include('../partials/foot')%>

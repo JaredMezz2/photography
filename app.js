@@ -7,7 +7,7 @@ const express = require('express');
 const app = express();
 
 // Database setup
-const connectDB = require('./Database/Connection')
+const connectDB = require('./database/connection')
 connectDB();
 
 app.use(express.static("public"));

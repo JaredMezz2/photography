@@ -7,95 +7,27 @@
             <h1 class="text-center">All Shoots Page</h1>
         </div>
     </div>
-    <div class="row">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col imageGallary">
-                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0009_zuerd1.png" class="img-fluid gallaryImage" alt="">
-                    <div class="middle">
-                        <div class="imageOverlay">
-                            <h2>Car</h2>
-                            <h3>Person</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col imageGallary">
-                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0009_zuerd1.png" class="img-fluid gallaryImage" alt="">
-                    <div class="middle">
-                        <div class="imageOverlay">
-                            <h2>Car</h2>
-                            <h3>Person</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col imageGallary">
-                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0009_zuerd1.png" class="img-fluid gallaryImage" alt="">
-                    <div class="middle">
-                        <div class="imageOverlay">
-                            <h2>Car</h2>
-                            <h3>Person</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col imageGallary">
-                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0132_uriqwf.png" class='img-fluid gallaryImage' alt="">
-                    <div class="middle">
-                        <div class="imageOverlay">
-                            <h2>Car</h2>
-                            <h3>Person</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col imageGallary">
-                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0132_uriqwf.png" class='img-fluid gallaryImage' alt="">
-                    <div class="middle">
-                        <div class="imageOverlay">
-                            <h2>Car</h2>
-                            <h3>Person</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col imageGallary">
-                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0132_uriqwf.png" class='img-fluid gallaryImage' alt="">
-                    <div class="middle">
-                        <div class="imageOverlay">
-                            <h2>Car</h2>
-                            <h3>Person</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col imageGallary">
-                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205734/frontSideShot_r9bvlm.png" class='img-fluid gallaryImage' alt="">
-                    <div class="middle">
-                        <div class="imageOverlay">
-                            <h2>Car</h2>
-                            <h3>Person</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col imageGallary">
-                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205734/frontSideShot_r9bvlm.png" class='img-fluid gallaryImage' alt="">
-                    <div class="middle">
-                        <div class="imageOverlay">
-                            <h2>Car</h2>
-                            <h3>Person</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col imageGallary">
-                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205734/frontSideShot_r9bvlm.png" class='img-fluid gallaryImage' alt="">
-                    <div class="middle">
-                        <div class="imageOverlay">
-                            <h2>Car</h2>
-                            <h3>Person</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="image-row">
+        <div class="image-col-3">
+            <% shootsInfo.forEach((shoot, index) => {
+                if (index <= shootsInfo.length / 3) { %>
+                    <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+                 <% }
+            }) %>
+        </div>
+        <div class="image-col-3">
+            <% shootsInfo.forEach((shoot, index) => {
+                if ((shootsInfo.length / 3) <= index && index < ((shootsInfo.length / 3) * 2)) { %>
+                    <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+                 <% }
+            }) %>
+        </div>
+        <div class="image-col-3">
+            <% shootsInfo.forEach((shoot, index) => {
+            if (index >= ((shootsInfo.length / 3) * 2)) { %>
+                <img src="<%= shoot.photo %>" class="<%= index %>" alt="">
+            <% }
+            }) %>
         </div>
     </div>
 </div>

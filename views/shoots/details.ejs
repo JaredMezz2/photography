@@ -25,14 +25,21 @@
     </div>
     <!-- Desktop Formatting -->
     <div class="d-none d-lg-block">
-        <div class="row photoRow">
-            <% foundShoot.photos.forEach ((photo, index) => { %>
-                <% if (index % 2 === 0) { %>
-                    <img src="<%= photo.url %>" alt="" class="photoLeft">
-                <% } else { %>
-                    <img src="<%= photo.url %>" alt="" class="photoRight">
-                <% } %>
-            <% }) %>
+        <div class="image-row">
+            <div class="image-col">
+                <% foundShoot.photos.forEach((photo, index) => {
+                    if (index < foundShoot.photos.length / 2) { %>
+                        <img src="<%= photo.url %>" alt="" class="1">
+                    <% }
+                })%>
+            </div>
+            <div class="image-col">
+                <% foundShoot.photos.forEach((photo, index) => {
+                if (index >= foundShoot.photos.length / 2) { %>
+                    <img src="<%= photo.url %>" alt="" class="2">
+                <% }
+                })%>
+            </div>
         </div>
     </div>
 </div>

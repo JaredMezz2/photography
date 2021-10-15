@@ -130,18 +130,26 @@ a:focus {
     color: #bfbfbf;
 }
 
-.photoRow {
+.image-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-col {
+    flex: 50%;
     max-width: 50%;
+    padding: 0 4px;
 }
 
-.photoRow img {
-    max-height: 100%;
-    max-width: 100%;
+.image-col-3 {
+    flex: 33.33%;
+    max-width: 33.33%;
+    padding: 0 4px;
 }
 
-.photoLeft {
-
-}
-.photoRight {
-    display: inline-block;
+.image-col img,
+.image-col-3 img{
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%
 }

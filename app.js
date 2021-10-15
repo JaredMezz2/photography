@@ -116,13 +116,40 @@ const tempShoots = [
             },
 
         ]
+    },
+    {
+        plate: "BPPD724",
+        date: "2021-05-16",
+        photos: [
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/q_auto/v1634320545/BPPD724/y5dnrgeowupfjgwzkis0.png",
+                filename: "datsun-side"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/q_auto/v1634320664/BPPD724/zkelodaink39008u0gmy.png",
+                filename: "datsun-frontq"
+            },
+            {
+                url: "https://res.cloudinary.com/drwy1imlr/image/upload/q_auto/v1634320714/BPPD724/faxxyore8uuc8eqwk62s.png",
+                filename: "datsun-back"
+            }
+        ]
     }
 ]
 
 // Shoots - INDEX ROUTE
 // Show all shoots
 app.get('/shoots', async(req, res) => {
-    res.render('shoots/index', { tempShoots });
+    // once database gets large enough there will be many photos total, only need to access a single photo + plate name
+    // on index page so am just passing over whats necessary
+    let shootsInfo = tempShoots.map(shoot => (
+        {
+            plate: shoot.plate,
+            photo: shoot.photos[0].url
+        }
+    ))
+    console.log(shootsInfo);
+    res.render('shoots/index', { shootsInfo });
 })
 
 // Shoots - SEARCH ROUTE

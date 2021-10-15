@@ -194,6 +194,14 @@ app.post("/contact", async(req, res) => {
     res.redirect("/");
 })
 
+// path to handle password submission for admin page
+app.post('/admin', async(req, res) => {
+
+})
+app.get("/admin", (req, res) => {
+    res.render('admin')
+})
+
 // Start the server
 app.listen(3000, function() {
     console.log("Server listening on Port 3000");

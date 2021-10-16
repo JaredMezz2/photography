@@ -9,6 +9,11 @@ const bcrypt = require('bcrypt');
 const session = require('express-session');
 app.use(session({secret: process.env.SESSION_SECRET }));
 
+// handle uploading images through html forms
+const multer = require('multer');
+const { storage } = require('./cloudinary');
+const upload = multer({ storage });
+
 // Database setup
 const connectDB = require('./database/connection')
 connectDB();
@@ -188,6 +193,17 @@ app.get('/shoots/:id', async(req, res) => {
 
     // render corresponding page with passed in shoot
     res.render('shoots/details', { foundShoot })
+})
+
+// Shoots - NEW ROUTE
+// Submit new shoot
+app.post('/newShoot', upload.array('photos'), async(req, res) => {
+    const { plate, date } = req.body;
+    console.log("Plate + Date: ");
+    console.log(plate, date);
+    console.log("Files: ");
+    console.log(req.files);
+    res.redirect("/");
 })
 
 // Contact - CREATE ROUTE

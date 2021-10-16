@@ -8,6 +8,12 @@ const shootSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    name: {
+        type: String
+    },
+    contact: {
+        type: String
+    },
     date: {
         type: String
     },

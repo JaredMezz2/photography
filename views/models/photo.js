@@ -12,10 +12,7 @@ const photoSchema = new mongoose.Schema({
             url: String,
             filename: String
         }
-    ],
-    orientation: {
-        type: String
-    },
+    ]
 })
 
 // assign it to a variable to create instances of the model

@@ -1,53 +1,89 @@
 <%- include('partials/head')%>
 
-<div class="container-fluid h-100 d-flex flex-column justify-content-between p-0">
+<div class="container-fluid h-100 d-flex flex-column justify-content-between p-0 admin-page">
     <%- include('partials/navbar')%>
         <div class="container-fluid h-100">
             <!--  Mobile Formatting -->
             <div class="d-lg-none h-100 d-flex justify-content-center">
-                <div class="row">
-                    <div class="col-12 admin-panel">
+                <div class="row w-100">
+                    <div class="col-12 admin-panel d-flex flex-column justify-content-center align-items-center">
                         <h1>Total Shots</h1>
-                        <h3>10</h3>
+                        <h3><%= allShoots.length %></h3>
                     </div>
                     <div class="col-12 admin-panel">
-                        <h1>Client List</h1>
-                        <ul>
-                            <li>jim</li>
-                            <li>bob</li>
-                            <li>ricky</li>
+                        <h1 class="text-center p-1">Client List</h1>
+                        <ul class="list-group list-group-flush">
+                            <% allShoots.forEach(shoot => { %>
+                                <li class="list-group-item"> <%= shoot.plate %> </li>
+                            <% })%>
                         </ul>
                     </div>
                     <div class="col-12 admin-panel">
-                        <h1>New Shoot</h1>
-                        <h3>Plate: </h3>
-                        <h3>Date: </h3>
-                        <h3>Photos </h3>
+                        <form action="/newShoot" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around">
+                            <h1 class="text-center">New Shoot</h1>
+                            <div class="form-row">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text font-weight-bold" id="plate">Plate: </span>
+                                    <input type="text" class="form-control" name="plate" id="plate" placeholder="Plate">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text font-weight-bold" id="date">Date: </span>
+                                    <input type="date" class="form-control" name="date" id="date" placeholder="Date">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text font-weight-bold" for="inputGroupFile01">Photos: </label>
+                                    <input type="file" class="form-control" id="inputGroupFile01">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-outline-dark btn-lg">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
             <!--  Desktop Formatting -->
             <div class="d-none d-lg-flex flex-column h-100 justify-content-center">
-                    <div class="row">
-                        <div class="col admin-panel">
+                    <div class="row h-50">
+                        <div class="col admin-panel d-flex flex-column justify-content-center align-items-center">
                             <h1>Total Shots</h1>
-                            <h3>10</h3>
+                            <h3><%= allShoots.length %></h3>
                         </div>
                         <div class="col admin-panel">
-                            <h1>Client List</h1>
-                            <ul>
-                                <li>jim</li>
-                                <li>bob</li>
-                                <li>ricky</li>
+                            <h1 class="text-center p-2">Client List</h1>
+                            <ul class="list-group list-group-flush">
+                                <% allShoots.forEach(shoot => { %>
+                                   <li class="list-group-item"> <%= shoot.plate %> </li>
+                                <% })%>
                             </ul>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row h-50">
                         <div class="col admin-panel">
-                            <h1>New Shoot</h1>
-                            <h3>Plate: </h3>
-                            <h3>Date: </h3>
-                            <h3>Photos </h3>
+                            <form action="/newShoot" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around p-3" enctype="multipart/form-data">
+                                <h1 class="text-center">New Shoot</h1>
+                                <div class="form-row">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text font-weight-bold" id="plate">Plate: </span>
+                                        <input type="text" class="form-control" name="plate" id="plate" placeholder="Plate">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text font-weight-bold" id="date">Date: </span>
+                                        <input type="date" class="form-control" name="date" id="date" placeholder="Date">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text font-weight-bold" for="photos">Photos: </label>
+                                        <input type="file" class="form-control" id="photos" name="photos" multiple>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-outline-dark btn-lg">Submit</button>
+                            </form>
                         </div>
                     </div>
             </div>

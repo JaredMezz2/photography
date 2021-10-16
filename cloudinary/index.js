@@ -14,8 +14,12 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        allowedFormats: ['jpeg', 'jpg', 'png']
+        allowedFormats: ['jpeg', 'jpg', 'png'],
+        folder: (req, file) => {
+            return req.body.plate + '/'
+        }
     }
+
 });
 
 module.exports = {

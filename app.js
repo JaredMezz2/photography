@@ -5,6 +5,9 @@ if(process.env.NODE_ENV !== "production") {
 
 const express = require('express');
 const app = express();
+const bcrypt = require('bcrypt');
+const session = require('express-session');
+app.use(session({secret: process.env.SESSION_SECRET }));
 
 // Database setup
 const connectDB = require('./database/connection')
@@ -194,12 +197,34 @@ app.post("/contact", async(req, res) => {
     res.redirect("/");
 })
 
-// path to handle password submission for admin page
-app.post('/admin', async(req, res) => {
-
+// ADMIN PAGE
+// authentication page for accessing admin panel, user submits password and passes into post /admin
+app.get('/adminLogin', (req, res) => {
+    res.render('adminLogin')
 })
+// handle authentication in backend, if success route to /admin if not send back
+app.post('/admin', async(req, res) => {
+    // pull password from submitted form
+    const { password } = req.body;
+    // compare hashed password to env variable password
+    const validPassword = await bcrypt.compare(password, process.env.ADMIN_PASS);
+    // if success, redirect to /admin page
+    if(validPassword) {
+        req.session.validAdmin = true;
+        res.redirect("admin");
+    } else {
+        // if failed, redirect to /adminLogin
+        res.redirect('adminLogin')
+    }
+})
+
+// admin panel display page, sends over all shoots for displayed info and can submit new shoot from here
 app.get("/admin", (req, res) => {
-    res.render('admin')
+    if(!req.session.validAdmin) {
+        res.redirect('adminLogin')
+    } else {
+        res.render('admin', { allShoots: tempShoots })
+    }
 })
 
 // Start the server

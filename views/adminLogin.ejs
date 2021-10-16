@@ -1,0 +1,13 @@
+<%- include('partials/head')%>
+<div class="container-fluid h-100 d-flex flex-column justify-content-center align-items-center">
+    <h1>Admin Login</h1>
+    <form class="form-inline" action="/admin" method="POST" name="submit">
+        <div class="form-group">
+            <label for="password"></label>
+            <input type="text" id="password" name="password" placeholder="Password">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>

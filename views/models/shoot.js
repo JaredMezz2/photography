@@ -17,7 +17,12 @@ const shootSchema = new mongoose.Schema({
     date: {
         type: String
     },
-    photos: [photoSchema]
+    photos: [
+        {
+            url: String,
+            filename: String
+        }
+    ]
 })
 
 // assign it to a variable to create instances of the model

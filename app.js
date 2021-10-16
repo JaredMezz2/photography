@@ -43,7 +43,6 @@ app.get("/", (req, res) => {
 // app.use('/shoot', shootRoutes);
 
 const Shoot = require("./views/models/shoot");
-const Photo = require("./views/models/photo");
 
 const tempShoots = [
     {
@@ -198,11 +197,13 @@ app.get('/shoots/:id', async(req, res) => {
 // Shoots - NEW ROUTE
 // Submit new shoot
 app.post('/newShoot', upload.array('photos'), async(req, res) => {
-    const { plate, date } = req.body;
-    console.log("Plate + Date: ");
-    console.log(plate, date);
-    console.log("Files: ");
-    console.log(req.files);
+    const { plate, name, contact, date } = req.body;
+    let photos = req.files.map(f => ({url: f.path, filename: f.filename}));
+
+    const newShoot = await new Shoot({ plate, name, contact, date, photos });
+    await newShoot.save();
+
+    // TODO: Update to path of newly created route
     res.redirect("/");
 })
 

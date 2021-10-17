@@ -7,7 +7,11 @@ const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
 const session = require('express-session');
-app.use(session({secret: process.env.SESSION_SECRET }));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: false
+}));
 
 // handle uploading images through html forms
 const multer = require('multer');

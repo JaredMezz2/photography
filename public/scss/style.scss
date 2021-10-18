@@ -56,6 +56,7 @@ html, body {
 
 .imageDisplay {
   padding: 0;
+  height: 100%;
 }
 
 .imageGallary {
@@ -194,4 +195,9 @@ a:focus {
   border: 2px solid black;
   border-radius: 2%;
   margin: 1%
+}
+
+.mobileHeader {
+  display: flex;
+  flex: 1;
 }

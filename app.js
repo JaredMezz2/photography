@@ -41,6 +41,7 @@ app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/scss', express.static(__dirname + '/node_modules/bootstrap/scss'));
+app.use('/js', express.static(__dirname + '/node_modules/@fortawesome/fontawesome-free/js'));
 
 // Home - INDEX ROUTE
 // Display the home page

@@ -129,9 +129,10 @@ app.post("/contact", async(req, res) => {
 
     let mailOptions = {
         from: req.body.email,
+        replyTo: req.body.email,
         to: 'mezzshotsemail@gmail.com',
         subject: 'Shoot Inquiry - ' + req.body.name,
-        text: req.body.message
+        text: "Email: " + req.body.email + ' \n' + 'Message: \n' + req.body.message
     };
     await transporter.sendMail(mailOptions, function(err, info) {
         if (err) {
@@ -140,7 +141,7 @@ app.post("/contact", async(req, res) => {
             console.log('email sent!')
         }
     })
-    res.redirect("/");
+    res.redirect("back");
 })
 
 // ADMIN PAGE

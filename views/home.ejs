@@ -1,14 +1,17 @@
 <%- include('partials/head')%>
-<div class="container-fluid p-0 h-100">
-    <%- include('partials/navbar')%>
-    <%- include('partials/plateSearch')%>
+<%- include('partials/navbar')%>
+<%- include('partials/plateSearch')%>
+<div class="container-fluid p-0 h-100 body-container">
+
     <!-- Header Section -->
     <div >
         <!-- Mobile Devices -->
         <div class="d-lg-none">
-            <div class="row">
-                <div class="col imageDisplay">
-                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/frontSideShot_r9bvlm.png" class="img-fluid" alt="">
+            <div class="row position-relative text-center">
+                <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/frontSideShot_r9bvlm.png" class="img-fluid" alt="">
+                <div class="middle-text">
+                    <h1 class="styledText mainText negOffset text-white">MEZZ</h1>
+                    <h1 class="styledText mainText offset text-white">SHOTS</h1>
                 </div>
             </div>
         </div>
@@ -25,52 +28,17 @@
     </div>
     <!-- Contact Section -->
     <%- include('partials/contact')%>
-    <!-- Gallary Section -->
-    <div class="row gallary-row">
-        <img src="https://res.cloudinary.com/drwy1imlr/image/upload/q_auto/v1634606140/z7oubgqdc8u9rofjllk6.png" class="img-fluid header-image" alt="">
-    </div>
+    <a href="/shoots">
+        <div class="row banner-row position-relative text-center">
+            <img src="https://res.cloudinary.com/drwy1imlr/image/upload/q_auto/v1634606140/z7oubgqdc8u9rofjllk6.png" class="img-fluid banner-image" alt="">
+            <div class="overlay"></div>
+            <div class="middle-text">
+                <h1 class="text-white banner-text">View All Shoots</h1>
+            </div>
+        </div>
+    </a>
     <%- include('partials/foot')%>
 </div>
 
-
 <script src="../js/bootstrapValidation.js"></script>
 
-<!--<div class="row h-100">-->
-<!--    <div class="col imageDisplay">-->
-<!--        <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0009_zuerd1.png" class="img-fluid" alt="">-->
-<!--    </div>-->
-<!--    <div class="col imageDisplay">-->
-<!--        <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0132_uriqwf.png" class='img-fluid' alt="">-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--        &lt;!&ndash; Double Photo for Desktop Devices &ndash;&gt;-->
-<!--        <div class="d-none d-lg-block">-->
-<!--            <div class="row">-->
-<!--                <div class="col imageDisplay">-->
-<!--                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0009_zuerd1.png" class="img-fluid" alt="">-->
-<!--                </div>-->
-<!--                <div class="col imageDisplay">-->
-<!--                    <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/DSC_0132_uriqwf.png" class='img-fluid' alt="">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-caption">-->
-<!--                <h1 class="styledText mainText negOffset botMargin">MEZZ</h1>-->
-<!--                <h1 class="styledText mainText offset">SHOTS</h1>-->
-<!--            </div>-->
-<!--            &lt;!&ndash;            <h1 class="carousel-caption carousel-caption-outside styledText pb-5">MEZZ</h1>&ndash;&gt;-->
-<!--            &lt;!&ndash;            <h1 class="carousel-caption carousel-caption-outside styledText pt-5">SHOTS</h1>&ndash;&gt;-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; Contact Section &ndash;&gt;-->
-<!--    <%- include('partials/contact')%>-->
-
-<!--    &lt;!&ndash; Gallery &ndash;&gt;-->
-<!--    <div class="row">-->
-<!--        <div class="col imageDisplay">-->
-<!--            <img src="https://res.cloudinary.com/drwy1imlr/image/upload/f_auto/v1623205735/sidemirror_qgngpb.png" class='img-fluid' alt="">-->
-<!--            <h1 class="carousel-caption carousel-caption-inside styledText mainText"><a href="/shoots">View All Shoots</a></h1>-->
-<!--        </div>-->
-
-<!--    </div>-->
-<!--</div>-->

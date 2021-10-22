@@ -11135,6 +11135,7 @@ html, body {
   margin: 0 0;
   padding: 0 0;
   scroll-behavior: smooth;
+  scroll-padding-top: 50px;
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -11161,6 +11162,10 @@ textarea {
     font-size: 5vw;
   }
 }
+.body-container {
+  overflow-y: hidden;
+}
+
 .headerImages {
   height: 75vh;
 }
@@ -11326,14 +11331,35 @@ a:focus {
   transform: translate(-50%, -50%);
 }
 
-.gallary-row {
-  max-height: 30%;
+.banner-row {
+  height: 40%;
   overflow: hidden;
 }
 
-.gallary-row img {
+.banner-image {
   position: relative;
-  transform: translateY(-30%);
+  top: 40%;
+  margin-bottom: -40%;
+  transform: translateY(-40%);
+  transition: all 1s ease;
+}
+
+.banner-text {
+  font-size: 3em;
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.8);
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.banner-row:hover > .overlay {
+  opacity: 0.5;
 }
 
 /*# sourceMappingURL=style.css.map */

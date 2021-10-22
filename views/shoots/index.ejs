@@ -1,34 +1,49 @@
 <%- include('../partials/head')%>
-<div class="container-fluid p-0">
-    <%- include('../partials/navbar')%>
-    <%- include('../partials/plateSearch')%>
+<%- include('../partials/navbar')%>
+<%- include('../partials/plateSearch')%>
+<div class="container-fluid p-0 body-container">
+    <!-- Header Section -->
     <div class="row">
         <div class="col">
-            <h1 class="text-center">All Shoots Page</h1>
+            <h1 class="text-center p-3">Recent Shoots</h1>
         </div>
     </div>
-    <div class="image-row">
-        <div class="image-col-3">
-            <% shootsInfo.forEach((shoot, index) => {
-                if (index <= shootsInfo.length / 3) { %>
-                    <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
-                 <% }
-            }) %>
-        </div>
-        <div class="image-col-3">
-            <% shootsInfo.forEach((shoot, index) => {
-                if ((shootsInfo.length / 3) <= index && index < ((shootsInfo.length / 3) * 2)) { %>
-                    <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
-                 <% }
-            }) %>
-        </div>
-        <div class="image-col-3">
-            <% shootsInfo.forEach((shoot, index) => {
-            if (index >= ((shootsInfo.length / 3) * 2)) { %>
-                <img src="<%= shoot.photo %>" class="<%= index %>" alt="">
-            <% }
-            }) %>
+    <!-- Image Gallary -->
+    <!-- Mobile Devices -->
+    <div class="d-lg-none">
+        <div class="row">
+                <% shootsInfo.forEach(shoot => { %>
+                    <img src="<%= shoot.photo %>" class="img-fluid" alt="">
+                <% })%>
         </div>
     </div>
+    <!-- Desktop -->
+   <div class="d-none d-lg-block">
+       <div class="image-row">
+           <div class="image-col-3">
+               <% shootsInfo.forEach((shoot, index) => {
+               if (index <= shootsInfo.length / 3) { %>
+                   <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+               <% }
+               }) %>
+           </div>
+           <div class="image-col-3">
+               <% shootsInfo.forEach((shoot, index) => {
+               if ((shootsInfo.length / 3) <= index && index < ((shootsInfo.length / 3) * 2)) { %>
+                   <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+               <% }
+               }) %>
+           </div>
+           <div class="image-col-3">
+               <% shootsInfo.forEach((shoot, index) => {
+               if (index >= ((shootsInfo.length / 3) * 2)) { %>
+                   <img src="<%= shoot.photo %>" class="<%= index %>" alt="">
+               <% }
+               }) %>
+           </div>
+       </div>
+   </div>
+
+
 </div>
 <%- include('../partials/foot')%>

@@ -1,7 +1,9 @@
 <%- include('../partials/head')%>
-<div class="container-fluid p-0">
-    <%- include('../partials/navbar')%>
-    <%- include('../partials/plateSearch')%>
+<%- include('../partials/navbar')%>
+<%- include('../partials/plateSearch')%>
+<div class="container-fluid p-0 body-container">
+
+    <!-- Header Section -->
     <div class="row">
         <div class="col text-center">
             <h1>Plate: <%= foundShoot.plate %></h1>
@@ -16,11 +18,13 @@
     <!-- Mobile Formatting -->
     <div class="d-lg-none">
         <div class="row">
+            <div class="col-12">
             <% foundShoot.photos.forEach (photo => { %>
-                <div class="col-12">
+
                     <img class="img-fluid" src="<%= photo.url %>" alt="Card image cap">
-                </div>
+
             <% }) %>
+            </div>
         </div>
     </div>
     <!-- Desktop Formatting -->

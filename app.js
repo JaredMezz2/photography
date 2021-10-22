@@ -114,15 +114,14 @@ app.post('/newShoot', upload.array('photos'), async(req, res) => {
 
 // Contact - CREATE ROUTE
 const nodemailer = require('nodemailer');
-const smtpTransport = require('nodemailer-smtp-transport');
-let transporter = nodemailer.createTransport(smtpTransport({
+let transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
     auth: {
         user: 'mezzshotsemail@gmail.com',
         pass: process.env.GMAIL_PASS
     }
-}));
+});
 
 // Receive contact form info
 app.post("/contact", async(req, res) => {

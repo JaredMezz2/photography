@@ -30,7 +30,6 @@
     "multer-storage-cloudinary": "^4.0.0",
     "node-sass": "^6.0.1",
     "nodemailer": "^6.7.0",
-    "nodemailer-smtp-transport": "^2.7.4",
     "path": "^0.12.7"
   }
 }

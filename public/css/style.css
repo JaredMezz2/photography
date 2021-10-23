@@ -11275,6 +11275,7 @@ a:focus {
 .image-row {
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 1%;
 }
 
 .image-col {

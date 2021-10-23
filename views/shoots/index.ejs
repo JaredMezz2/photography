@@ -27,7 +27,7 @@
        <div class="image-row">
            <div class="image-col-3">
                <% shootsInfo.forEach((shoot, index) => {
-               if (index <= shootsInfo.length / 3) { %>
+               if (index < shootsInfo.length / 3) { %>
                    <div class="row position-relative text-center">
                        <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
                        <div class="bottom-text">

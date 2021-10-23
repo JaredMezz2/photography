@@ -12,9 +12,14 @@
     <!-- Mobile Devices -->
     <div class="d-lg-none">
         <div class="row">
-                <% shootsInfo.forEach(shoot => { %>
-                    <img src="<%= shoot.photo %>" class="img-fluid" alt="">
-                <% })%>
+            <% shootsInfo.forEach(shoot => { %>
+                <div class="row position-relative text-center p-0">
+                    <img src="<%= shoot.photo %>" alt="" class="p-0">
+                    <div class="bottom-text">
+                        <a href='/shoots/<%= shoot.plate %>'><h1 class="shootCaption"><%= shoot.plate %></h1></a>
+                    </div>
+                </div>
+            <% })%>
         </div>
     </div>
     <!-- Desktop -->
@@ -23,21 +28,36 @@
            <div class="image-col-3">
                <% shootsInfo.forEach((shoot, index) => {
                if (index <= shootsInfo.length / 3) { %>
-                   <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+                   <div class="row position-relative text-center">
+                       <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+                       <div class="bottom-text">
+                           <a href='/shoots/<%= shoot.plate %>'><h3 class="shootCaption"><%= shoot.plate %></h3></a>
+                       </div>
+                   </div>
                <% }
                }) %>
            </div>
            <div class="image-col-3">
                <% shootsInfo.forEach((shoot, index) => {
                if ((shootsInfo.length / 3) <= index && index < ((shootsInfo.length / 3) * 2)) { %>
-                   <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+                   <div class="row position-relative text-center">
+                       <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+                       <div class="bottom-text">
+                           <a href='/shoots/<%= shoot.plate %>'><h3 class="shootCaption"><%= shoot.plate %></h3></a>
+                       </div>
+                   </div>
                <% }
                }) %>
            </div>
            <div class="image-col-3">
                <% shootsInfo.forEach((shoot, index) => {
                if (index >= ((shootsInfo.length / 3) * 2)) { %>
-                   <img src="<%= shoot.photo %>" class="<%= index %>" alt="">
+                   <div class="row position-relative text-center">
+                       <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+                       <div class="bottom-text">
+                           <a href='/shoots/<%= shoot.plate %>'><h3 class="shootCaption"><%= shoot.plate %></h3></a>
+                       </div>
+                   </div>
                <% }
                }) %>
            </div>

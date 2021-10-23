@@ -103,12 +103,15 @@ app.get('/shoots/:id', async(req, res) => {
 // Submit new shoot
 app.post('/newShoot', upload.array('photos'), async(req, res) => {
     const { plate, name, contact, date } = req.body;
-    let photos = req.files.map(f => ({url: f.path, filename: f.filename}));
+    let photos = req.files.map(f => ({
+        // eager cloudinary formatting, auto quality upload + watermark @ bottom
+        url: f.path.slice(0, f.path.indexOf('upload/') + 7) + 'q_auto/l_overlay,y_800/' + f.path.slice(f.path.indexOf('upload/') + 7),
+        filename: f.filename
+    }));
 
     const newShoot = await new Shoot({ plate, name, contact, date, photos });
     await newShoot.save();
 
-    // TODO: Update to path of newly created route
     res.redirect(`/shoots/${ plate }`);
 })
 

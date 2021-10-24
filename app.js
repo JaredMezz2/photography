@@ -142,9 +142,10 @@ app.post("/contact", async(req, res) => {
             res.send(err)
         } else {
             console.log('email sent!')
+            res.redirect("back");
         }
     })
-    res.redirect("back");
+
 })
 
 // ADMIN PAGE

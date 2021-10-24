@@ -105,7 +105,7 @@ app.post('/newShoot', upload.array('photos'), async(req, res) => {
     const { plate, name, contact, date } = req.body;
     let photos = req.files.map(f => ({
         // eager cloudinary formatting, auto quality upload + watermark @ bottom
-        url: f.path.slice(0, f.path.indexOf('upload/') + 7) + 'q_auto/l_overlay,y_800/' + f.path.slice(f.path.indexOf('upload/') + 7),
+        url: f.path.slice(0, f.path.indexOf('upload/') + 7) + 'q_auto/if_h_gt_2000,l_overlay,y_1250/if_h_lte_2000,l_overlay,y_800/' + f.path.slice(f.path.indexOf('upload/') + 7),
         filename: f.filename
     }));
 

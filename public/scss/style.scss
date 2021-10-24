@@ -132,6 +132,25 @@ html, body {
 nav .navbar-brand {
   font-size: 2em;
 }
+.nav-link {
+  position: relative;
+}
+.nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: black;
+
+  transition: transform 300ms ease-in-out;
+  transform: scaleX(0);
+}
+.nav-link:hover::before,
+.nav-link:focus::before {
+  transform: scaleX(1);
+}
 
 #contact {
   padding: 4vh;
@@ -150,7 +169,8 @@ nav .navbar-brand {
 
 .mainText {
   font-size: 150px;
-  text-shadow: 0px 30px 3px rgba(0,0,0,0.16);
+  line-height: 0.75em;
+  text-shadow: 0 30px 3px rgba(0,0,0,0.16);
 }
 
 .botMargin {
@@ -244,14 +264,18 @@ a:focus {
 }
 
 .shootCaption {
-  background-color: white;
+  background-color: transparent;
+  color: white;
   display: inline-block;
   padding: 1% 2%;
   transition: all 0.5s ease;
   cursor: pointer;
+  border: 2px solid white;
+  border-radius: 5%;
 }
 .shootCaption:hover {
   color: black;
+  background-color: white;
   -webkit-box-shadow: 0px 5px 5px 1px rgba(0,0,0,0.7);
   box-shadow: 0px 5px 5px 1px rgba(0,0,0,0.7);
 }

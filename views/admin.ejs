@@ -19,12 +19,24 @@
                         </ul>
                     </div>
                     <div class="col-12 admin-panel">
-                        <form action="/newShoot" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around">
+                        <form action="/shoots/new" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around">
                             <h1 class="text-center">New Shoot</h1>
                             <div class="form-row">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-text font-weight-bold" id="plate">Plate: </span>
                                     <input type="text" class="form-control" name="plate" id="plate" placeholder="Plate">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text font-weight-bold" id="name">Name: </span>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text font-weight-bold" id="contactInfo">Contact: </span>
+                                    <input type="text" class="form-control" name="contactInfo" id="contactInfo" placeholder="Contact">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -62,7 +74,7 @@
                     </div>
                     <div class="row h-50">
                         <div class="col admin-panel">
-                            <form action="/newShoot" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around p-3" enctype="multipart/form-data">
+                            <form action="/shoots/new" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around p-3" enctype="multipart/form-data">
                                 <h1 class="text-center">New Shoot</h1>
                                 <div class="form-row">
                                     <div class="input-group input-group-lg">

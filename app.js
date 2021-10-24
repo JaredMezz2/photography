@@ -3,9 +3,9 @@ if(process.env.NODE_ENV !== "production") {
     require("dotenv").config();
 }
 
+// Instantiate Express & Setup current session for admin login
 const express = require('express');
 const app = express();
-const bcrypt = require('bcrypt');
 const session = require('express-session');
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -13,21 +13,19 @@ app.use(session({
     saveUninitialized: false
 }));
 
-// handle uploading images through html forms
-const multer = require('multer');
-const { storage } = require('./cloudinary');
-const upload = multer({ storage });
-
-// Database setup
+// Instantiate Database
 const connectDB = require('./database/connection')
 connectDB();
 
+// Deliver public folder to connections & set EJS as in-text js
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
+// Instantiate bodyParser for pulling data from submitted forms
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 
+// Instantiate methodOverride for proper REST methods
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
@@ -36,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 // pass in body as json on each request
 app.use(express.json());
 
-// include bootstrap npm files
+// include 3rd party styling libraries (bootstrap, jquery, fontawesome)
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
@@ -50,134 +48,14 @@ app.get("/", (req, res) => {
 })
 
 // shoot report routing
-// const shootRoutes = require('./routes/shoot');
-// app.use('/shoot', shootRoutes);
+const shootRoutes = require('./routes/shoot');
+app.use('/shoots', shootRoutes);
 
-const Shoot = require("./views/models/shoot");
+const adminRoutes = require('./routes/admin');
+app.use('/admin', adminRoutes);
 
-// Shoots - INDEX ROUTE
-// Show all shoots
-app.get('/shoots', async(req, res) => {
-    // once database gets large enough there will be many photos total, only need to access a single photo + plate name
-    // on index page so am just passing over whats necessary
-    const allShoots = await Shoot.find();
-    let shootsInfo = allShoots.map(shoot => (
-        {
-            plate: shoot.plate,
-            photo: shoot.photos[0].url
-        }
-    ))
-    res.render('shoots/index', { shootsInfo });
-})
-
-// Shoots - SEARCH ROUTE
-// Receiving form submission to search for specific route
-app.post('/shoots', async(req, res) => {
-    // Extract plate searched on form from request body
-    let { enteredPlate } = req.body;
-    enteredPlate = enteredPlate.toUpperCase();
-
-    // check to see if plate is found in a past shoot
-    const dbShoot = await Shoot.findOne({ plate: enteredPlate });
-    if (dbShoot) {
-        res.redirect(`/shoots/${ enteredPlate }`);
-    } else {
-        res.render('shoots/setupShoot');
-    }
-})
-
-// Shoots - SHOW ROUTE
-// Show details of specific shoot
-app.get('/shoots/:id', async(req, res) => {
-    // grab id from URL
-    const { id } = req.params;
-
-    // find shoot in db
-    const foundShoot = await Shoot.findOne({'plate': id});
-
-    // render corresponding page with passed in shoot
-    res.render('shoots/details', { foundShoot })
-})
-
-// Shoots - NEW ROUTE
-// Submit new shoot
-app.post('/newShoot', upload.array('photos'), async(req, res) => {
-    const { plate, name, contact, date } = req.body;
-    let photos = req.files.map(f => ({
-        // eager cloudinary formatting, auto quality upload + watermark @ bottom
-        url: f.path.slice(0, f.path.indexOf('upload/') + 7) + 'f_auto,q_auto/if_h_gt_2000,l_overlay,y_1250/if_h_lte_2000,l_overlay,y_800/' + f.path.slice(f.path.indexOf('upload/') + 7),
-        filename: f.filename
-    }));
-
-    const newShoot = await new Shoot({ plate, name, contact, date, photos });
-    await newShoot.save();
-
-    res.redirect(`/shoots/${ plate }`);
-})
-
-// Contact - CREATE ROUTE
-const nodemailer = require('nodemailer');
-let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    auth: {
-        user: 'mezzshotsemail@gmail.com',
-        pass: process.env.GMAIL_PASS
-    }
-});
-
-// Receive contact form info
-app.post("/contact", async(req, res) => {
-    console.log(req.body);
-
-    let mailOptions = {
-        from: req.body.email,
-        replyTo: req.body.email,
-        to: 'mezzshotsemail@gmail.com',
-        subject: 'Shoot Inquiry - ' + req.body.name,
-        text: "Email: " + req.body.email + ' \n' + 'Message: \n' + req.body.message
-    };
-    await transporter.sendMail(mailOptions, function(err, info) {
-        if (err) {
-            res.send(err)
-        } else {
-            console.log('email sent!')
-            res.redirect("back");
-        }
-    })
-
-})
-
-// ADMIN PAGE
-// authentication page for accessing admin panel, user submits password and passes into post /admin
-app.get('/adminLogin', (req, res) => {
-    res.render('adminLogin')
-})
-// handle authentication in backend, if success route to /admin if not send back
-app.post('/admin', async(req, res) => {
-    // pull password from submitted form
-    const { password } = req.body;
-    // compare hashed password to env variable password
-    const validPassword = await bcrypt.compare(password, process.env.ADMIN_PASS);
-    // if success, redirect to /admin page
-    if(validPassword) {
-        req.session.validAdmin = true;
-        res.redirect("admin");
-    } else {
-        // if failed, redirect to /adminLogin
-        res.redirect('adminLogin')
-    }
-})
-
-// admin panel display page, sends over all shoots for displayed info and can submit new shoot from here
-app.get("/admin", async (req, res) => {
-    if(!req.session.validAdmin) {
-        res.redirect('adminLogin')
-    } else {
-        const allShoots = await Shoot.find();
-        res.render('admin', { allShoots })
-    }
-})
+const contactRoutes = require('./routes/contact');
+app.use('/contact', contactRoutes);
 
 // Start the server
 app.listen(3000, function() {

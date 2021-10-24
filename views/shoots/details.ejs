@@ -5,14 +5,9 @@
 
     <!-- Header Section -->
     <div class="row">
-        <div class="col text-center">
+        <div class="col text-center p-3">
             <h1>Plate: <%= foundShoot.plate %></h1>
             <h3>Date: <%= foundShoot.date %></h3>
-        </div>
-    </div>
-    <div class="row photoRow">
-        <div class="photoColumns">
-
         </div>
     </div>
     <!-- Mobile Formatting -->
@@ -20,9 +15,7 @@
         <div class="row">
             <div class="col-12 p-0">
             <% foundShoot.photos.forEach (photo => { %>
-
-                    <img class="img-fluid mobile-image-padding" src="<%= photo.url %>" alt="Card image cap">
-
+                <img class="img-fluid mobile-image-padding" src="<%= photo.url %>" alt="Card image cap">
             <% }) %>
             </div>
         </div>
@@ -30,14 +23,14 @@
     <!-- Desktop Formatting -->
     <div class="d-none d-lg-block">
         <div class="image-row">
-            <div class="image-col">
+            <div class="image-col d-flex flex-column justify-content-center">
                 <% foundShoot.photos.forEach((photo, index) => {
                     if (index < foundShoot.photos.length / 2) { %>
                         <img src="<%= photo.url %>" alt="" class="1">
                     <% }
                 })%>
             </div>
-            <div class="image-col">
+            <div class="image-col d-flex flex-column justify-content-center">
                 <% foundShoot.photos.forEach((photo, index) => {
                 if (index >= foundShoot.photos.length / 2) { %>
                     <img src="<%= photo.url %>" alt="" class="2">

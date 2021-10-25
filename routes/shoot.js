@@ -13,7 +13,10 @@ router.get('/', async(req, res) => {
     // once database gets large enough there will be many photos total, only need to access a single photo + plate name
     // on index page so am just passing over whats necessary
     const allShoots = await Shoot.find();
-    let shootsInfo = allShoots.map(shoot => (
+    // strip out any entries that currently have 0 photos
+    let completedShoots = allShoots.flatMap(( shoot ) => shoot.photos.length > 0 ? shoot : []);
+    // strip out all unnecessary data to be passed to the client, only need one photo & plate
+    let shootsInfo = completedShoots.map(shoot => (
         {
             plate: shoot.plate,
             photo: shoot.photos[0].url

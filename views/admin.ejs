@@ -2,15 +2,15 @@
 
 <div class="container-fluid d-flex flex-column justify-content-between p-0 admin-page">
     <%- include('partials/navbar')%>
-        <div class="container-fluid h-100">
+        <div class="container-fluid  ">
             <!--  Mobile Formatting -->
             <div class="d-lg-none h-100 d-flex justify-content-center">
-                <div class="row w-100 overflow-scroll">
-                    <div class="col-12 admin-panel d-flex flex-column justify-content-center align-items-center">
+                <div class="row w-100">
+                    <div class="col-12 admin-panel admin-panel-mobile d-flex flex-column justify-content-center align-items-center">
                         <h1>Total Shots</h1>
                         <h3><%= allShoots.length %></h3>
                     </div>
-                    <div class="col-12 admin-panel overflow-scroll">
+                    <div class="col-12 admin-panel admin-panel-mobile overflow-scroll">
                         <h1 class="text-center p-1">Client List</h1>
                         <ul class="list-group list-group-flush">
                             <% allShoots.forEach(shoot => { %>
@@ -18,10 +18,10 @@
                             <% })%>
                         </ul>
                     </div>
-                    <div class="col-12 admin-panel">
+                    <div class="col-12 admin-panel admin-panel-mobile">
                         <%- include('partials/reserveShoot')%>
                     </div>
-                    <div class="col-12 admin-panel">
+                    <div class="col-12 admin-panel admin-panel-mobile">
                         <%- include('partials/newShoot')%>
                     </div>
                 </div>

@@ -11320,7 +11320,7 @@ a:focus {
 
 .admin-page {
   background-color: #333333;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .admin-panel {

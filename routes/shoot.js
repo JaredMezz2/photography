@@ -48,8 +48,18 @@ router.post('/new', upload.array('photos'), async(req, res) => {
         filename: f.filename
     }));
 
-    const newShoot = await new Shoot({ plate, name, contact, date, photos });
-    await newShoot.save();
+    // check to see if shoot has been reserved previously
+    const foundShoot = await Shoot.findOne({plate});
+    if (!foundShoot) {
+        const newShoot = await new Shoot({ plate, name, contact, date, photos });
+        await newShoot.save();
+    } else {
+        // update existing shoot with newly submitted information
+        name ? foundShoot.name = name : null;
+        contact ? foundShoot.contact = contact : null;
+        photos ? foundShoot.photos = foundShoot.photos.concat(photos) : null;
+        await foundShoot.save();
+    }
 
     res.redirect(`/shoots/${ plate }`);
 })
@@ -59,12 +69,27 @@ router.post('/new', upload.array('photos'), async(req, res) => {
 router.get('/:id', async(req, res) => {
     // grab id from URL
     const { id } = req.params;
-
     // find shoot in db
     const foundShoot = await Shoot.findOne({'plate': id});
-
     // render corresponding page with passed in shoot
     res.render('shoots/details', { foundShoot })
+})
+
+router.post('/reserve', async(req, res) => {
+    // pull form data from submission
+    const { plate, date } = req.body;
+
+    // check to see if pre-existing page for current plate
+    let foundShoot = await Shoot.findOne({plate});
+    // if there isn't, we need to create a new shoot entry in our DB so the url triggers
+    if (!foundShoot) {
+        // create a new shoot with the date shot and plate
+        const newShoot = await new Shoot({ plate, date })
+        await newShoot.save()
+    } // if there is we don't need to do anything, so just send them to the shoot page
+
+    // send to the shoot page
+    res.redirect(`/shoots/${ plate }`);
 })
 
 module.exports = router;

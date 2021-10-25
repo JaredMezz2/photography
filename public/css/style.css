@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(//db.onlinewebfonts.com/c/9b6ea01638fd252fe935acad72ebb914?family=SignPainter-HouseScript);
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -11131,7 +11130,7 @@ textarea.form-control-lg {
 
 html, body {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   margin: 0 0;
   padding: 0 0;
   scroll-behavior: smooth;
@@ -11321,6 +11320,7 @@ a:focus {
 
 .admin-page {
   background-color: #333333;
+  height: 100vh;
 }
 
 .admin-panel {

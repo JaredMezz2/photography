@@ -1,16 +1,16 @@
 <%- include('partials/head')%>
 
-<div class="container-fluid h-100 d-flex flex-column justify-content-between p-0 admin-page">
+<div class="container-fluid d-flex flex-column justify-content-between p-0 admin-page">
     <%- include('partials/navbar')%>
         <div class="container-fluid h-100">
             <!--  Mobile Formatting -->
             <div class="d-lg-none h-100 d-flex justify-content-center">
-                <div class="row w-100">
+                <div class="row w-100 overflow-scroll">
                     <div class="col-12 admin-panel d-flex flex-column justify-content-center align-items-center">
                         <h1>Total Shots</h1>
                         <h3><%= allShoots.length %></h3>
                     </div>
-                    <div class="col-12 admin-panel">
+                    <div class="col-12 admin-panel overflow-scroll">
                         <h1 class="text-center p-1">Client List</h1>
                         <ul class="list-group list-group-flush">
                             <% allShoots.forEach(shoot => { %>
@@ -19,40 +19,10 @@
                         </ul>
                     </div>
                     <div class="col-12 admin-panel">
-                        <form action="/shoots/new" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around">
-                            <h1 class="text-center">New Shoot</h1>
-                            <div class="form-row">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text font-weight-bold" id="plate">Plate: </span>
-                                    <input type="text" class="form-control" name="plate" id="plate" placeholder="Plate">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text font-weight-bold" id="name">Name: </span>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text font-weight-bold" id="contactInfo">Contact: </span>
-                                    <input type="text" class="form-control" name="contactInfo" id="contactInfo" placeholder="Contact">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text font-weight-bold" id="date">Date: </span>
-                                    <input type="date" class="form-control" name="date" id="date" placeholder="Date">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text font-weight-bold" for="inputGroupFile01">Photos: </label>
-                                    <input type="file" class="form-control" id="inputGroupFile01" multiple>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-outline-dark btn-lg">Submit</button>
-                        </form>
+                        <%- include('partials/reserveShoot')%>
+                    </div>
+                    <div class="col-12 admin-panel">
+                        <%- include('partials/newShoot')%>
                     </div>
                 </div>
             </div>
@@ -63,7 +33,7 @@
                             <h1>Total Shots</h1>
                             <h3><%= allShoots.length %></h3>
                         </div>
-                        <div class="col admin-panel">
+                        <div class="col admin-panel overflow-scroll">
                             <h1 class="text-center p-2">Client List</h1>
                             <ul class="list-group list-group-flush">
                                 <% allShoots.forEach(shoot => { %>
@@ -74,40 +44,10 @@
                     </div>
                     <div class="row h-50">
                         <div class="col admin-panel">
-                            <form action="/shoots/new" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around p-3" enctype="multipart/form-data">
-                                <h1 class="text-center">New Shoot</h1>
-                                <div class="form-row">
-                                    <div class="input-group input-group-lg">
-                                        <span class="input-group-text font-weight-bold" id="plate">Plate: </span>
-                                        <input type="text" class="form-control" name="plate" id="plate" placeholder="Plate">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="input-group input-group-lg">
-                                        <span class="input-group-text font-weight-bold" id="name">Name: </span>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="input-group input-group-lg">
-                                        <span class="input-group-text font-weight-bold" id="contactInfo">Contact: </span>
-                                        <input type="text" class="form-control" name="contactInfo" id="contactInfo" placeholder="Contact">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="input-group input-group-lg">
-                                        <span class="input-group-text font-weight-bold" id="date">Date: </span>
-                                        <input type="date" class="form-control" name="date" id="date" placeholder="Date">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="input-group mb-3">
-                                        <label class="input-group-text font-weight-bold" for="photos">Photos: </label>
-                                        <input type="file" class="form-control" id="photos" name="photos" multiple>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-outline-dark btn-lg">Submit</button>
-                            </form>
+                            <%- include('partials/reserveShoot')%>
+                        </div>
+                        <div class="col admin-panel">
+                            <%- include('partials/newShoot')%>
                         </div>
                     </div>
             </div>

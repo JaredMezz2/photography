@@ -14,30 +14,45 @@
     <div class="d-lg-none">
         <div class="row">
             <div class="col-12 p-0">
-            <% foundShoot.photos.forEach (photo => { %>
-                <img class="img-fluid mobile-image-padding" src="<%= photo.url %>" alt="Card image cap">
-            <% }) %>
+                <% if (foundShoot.photos.length > 0) { %>
+                    <% foundShoot.photos.forEach (photo => { %>
+                        <img class="img-fluid mobile-image-padding" src="<%= photo.url %>" alt="Card image cap">
+                    <% }) %>
+                <% } else { %>
+                    <div class="container-fluid">
+                        <h1>Images Coming Soon</h1>
+                        <h3>Check back in 24hr!</h3>
+                    </div>
+
+                <% } %>
             </div>
         </div>
     </div>
     <!-- Desktop Formatting -->
     <div class="d-none d-lg-block">
-        <div class="image-row">
-            <div class="image-col d-flex flex-column justify-content-center">
-                <% foundShoot.photos.forEach((photo, index) => {
+        <% if (foundShoot.photos.length > 0) { %>
+            <div class="image-row">
+                <div class="image-col d-flex flex-column justify-content-center">
+                    <% foundShoot.photos.forEach((photo, index) => {
                     if (index < foundShoot.photos.length / 2) { %>
                         <img src="<%= photo.url %>" alt="" class="1">
                     <% }
-                })%>
+                    })%>
+                </div>
+                <div class="image-col d-flex flex-column justify-content-center">
+                    <% foundShoot.photos.forEach((photo, index) => {
+                    if (index >= foundShoot.photos.length / 2) { %>
+                        <img src="<%= photo.url %>" alt="" class="2">
+                    <% }
+                    })%>
+                </div>
             </div>
-            <div class="image-col d-flex flex-column justify-content-center">
-                <% foundShoot.photos.forEach((photo, index) => {
-                if (index >= foundShoot.photos.length / 2) { %>
-                    <img src="<%= photo.url %>" alt="" class="2">
-                <% }
-                })%>
+        <% } else { %>
+            <div class="container-fluid">
+                    <h1>Images coming soon</h1>
+                    <h3>Check back in 24hr!</h3>
             </div>
-        </div>
+        <% } %>
     </div>
 </div>
 <%- include('../partials/foot')%>

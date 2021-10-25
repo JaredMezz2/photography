@@ -1,16 +1,16 @@
-<form action="/shoots/reserve" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around p-3">
+<form action="/shoots/reserve" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around p-3 needs-validation" novalidate>
     <h1 class="text-center">Reserve Page</h1>
     <div class="section">
         <div class="form-row">
             <div class="input-group input-group-lg">
                 <span class="input-group-text font-weight-bold" id="plate">Plate: </span>
-                <input type="text" class="form-control" name="plate" id="plate" placeholder="Plate">
+                <input type="text" class="form-control" name="plate" id="plate" placeholder="Plate" required>
             </div>
         </div>
         <div class="form-row">
             <div class="input-group input-group-lg">
                 <span class="input-group-text font-weight-bold" id="date">Date: </span>
-                <input type="date" class="form-control" name="date" id="date" placeholder="Date">
+                <input type="date" class="form-control" name="date" id="date" placeholder="Date" required>
             </div>
         </div>
     </div>

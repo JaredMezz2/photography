@@ -29,6 +29,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
+const ExpressError = require('./utils/ExpressError');
+
 // form submission assigned to using json
 app.use(express.urlencoded({ extended: true }));
 // pass in body as json on each request
@@ -58,19 +60,20 @@ const contactRoutes = require('./routes/contact');
 app.use('/contact', contactRoutes);
 
 app.get('/throwError', (req, res) => {
-    throw new Error("ERROR");
+    throw new ExpressError('Error thrown from custom page', 420);
 })
 
-app.use((req, res) => {
-    res.status(404).send("URL Not Found");
+// final route catch
+app.all('*', (req, res, next) => {
+    next(new ExpressError('Page Not Found', 404));
 })
 
 app.use((err, req, res, next) => {
-    console.log("*****************")
-    console.log("******ERROR******")
-    console.log("*****************")
-    console.log(err);
-    next(err);
+    const { statusCode = 500 } = err;
+    if (!err.message) err.message="Something went wrong";
+
+    res.status(statusCode).render('error', { err });
+    res.statusMessage = err.statusMessage
 })
 
 // Start the server

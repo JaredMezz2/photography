@@ -6,10 +6,11 @@ const Shoot = require("../views/models/shoot");
 const multer = require('multer');
 const { storage } = require('../cloudinary');
 const upload = multer({ storage });
+const catchAsync = require('../utils/catchAsync');
 
 // Shoots - INDEX ROUTE
 // Show all shoots
-router.get('/', async(req, res) => {
+router.get('/', catchAsync(async(req, res) => {
     // once database gets large enough there will be many photos total, only need to access a single photo + plate name
     // on index page so am just passing over whats necessary
     const allShoots = await Shoot.find();
@@ -23,11 +24,11 @@ router.get('/', async(req, res) => {
         }
     ))
     res.render('shoots/index', { shootsInfo });
-})
+}))
 
 // Shoots - SEARCH ROUTE
 // Receiving form submission to search for specific route
-router.post('/', async(req, res) => {
+router.post('/', catchAsync(async(req, res) => {
     // Extract plate searched on form from request body
     let { enteredPlate } = req.body;
     enteredPlate = enteredPlate.toUpperCase();
@@ -39,11 +40,11 @@ router.post('/', async(req, res) => {
     } else {
         res.render('shoots/setupShoot');
     }
-})
+}))
 
 // Shoots - NEW ROUTE
 // Submit new shoot
-router.post('/new', upload.array('photos'), async(req, res) => {
+router.post('/new', upload.array('photos'), catchAsync(async(req, res, next) => {
     const { plate, name, contact, date } = req.body;
     let photos = req.files.map(f => ({
         // eager cloudinary formatting, auto quality upload + watermark @ bottom
@@ -65,20 +66,20 @@ router.post('/new', upload.array('photos'), async(req, res) => {
     }
 
     res.redirect(`/shoots/${ plate }`);
-})
+}))
 
 // Shoots - SHOW ROUTE
 // Show details of specific shoot
-router.get('/:id', async(req, res) => {
+router.get('/:id', catchAsync(async(req, res) => {
     // grab id from URL
     const { id } = req.params;
     // find shoot in db
     const foundShoot = await Shoot.findOne({'plate': id});
     // render corresponding page with passed in shoot
     res.render('shoots/details', { foundShoot })
-})
+}))
 
-router.post('/reserve', async(req, res) => {
+router.post('/reserve', catchAsync(async(req, res) => {
     // pull form data from submission
     const { plate, date } = req.body;
 
@@ -93,6 +94,6 @@ router.post('/reserve', async(req, res) => {
 
     // send to the shoot page
     res.redirect(`/shoots/${ plate }`);
-})
+}))
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const catchAsync = require('../utils/catchAsync');
 
 // Contact - CREATE ROUTE
 const nodemailer = require('nodemailer');
@@ -12,7 +13,7 @@ let transporter = nodemailer.createTransport({
     }
 });
 // Receive contact form info
-router.post("/", async(req, res) => {
+router.post("/", catchAsync(async(req, res) => {
     // set mail options for multer upon contact request, pull details from body
     let mailOptions = {
         from: req.body.email,
@@ -29,6 +30,6 @@ router.post("/", async(req, res) => {
             res.redirect("/");
         }
     })
-})
+}))
 
 module.exports = router;

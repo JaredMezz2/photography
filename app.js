@@ -57,6 +57,22 @@ app.use('/admin', adminRoutes);
 const contactRoutes = require('./routes/contact');
 app.use('/contact', contactRoutes);
 
+app.get('/throwError', (req, res) => {
+    throw new Error("ERROR");
+})
+
+app.use((req, res) => {
+    res.status(404).send("URL Not Found");
+})
+
+app.use((err, req, res, next) => {
+    console.log("*****************")
+    console.log("******ERROR******")
+    console.log("*****************")
+    console.log(err);
+    next(err);
+})
+
 // Start the server
 app.listen(3000, function() {
     console.log("Server listening on Port 3000");

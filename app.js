@@ -30,6 +30,14 @@ const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
 const ExpressError = require('./utils/ExpressError');
+const flash = require('connect-flash');
+app.use(flash());
+// flash middleware to pass through either message to each page, in the odd case there is one (ie email sent, shoot uploaded)
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+})
 
 // form submission assigned to using json
 app.use(express.urlencoded({ extended: true }));

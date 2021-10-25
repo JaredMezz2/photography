@@ -27,6 +27,7 @@ router.post("/", catchAsync(async(req, res) => {
         if (err) {
             res.send(err)
         } else {
+            req.flash('success', "Message successfully sent!");
             res.redirect("/");
         }
     })

@@ -26,8 +26,7 @@ router.post("/", async(req, res) => {
         if (err) {
             res.send(err)
         } else {
-            console.log('email sent!')
-            res.redirect("back");
+            res.redirect("/");
         }
     })
 })

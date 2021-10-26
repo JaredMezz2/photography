@@ -42,7 +42,7 @@ router.post('/', catchAsync(async(req, res) => {
     }
 }))
 
-// Shoots - NEW ROUTE
+// Shoots - NEW ROUTE - ADMIN ONLY
 // Submit new shoot
 router.post('/new', upload.array('photos'), catchAsync(async(req, res, next) => {
     const { plate, name, contact, date } = req.body;
@@ -65,6 +65,7 @@ router.post('/new', upload.array('photos'), catchAsync(async(req, res, next) => 
         await foundShoot.save();
     }
 
+    req.flash('success', "Shoot successfully uploaded!");
     res.redirect(`/shoots/${ plate }`);
 }))
 
@@ -93,6 +94,7 @@ router.post('/reserve', catchAsync(async(req, res) => {
     } // if there is we don't need to do anything, so just send them to the shoot page
 
     // send to the shoot page
+    req.flash('success', "Shoot successfully reserved!");
     res.redirect(`/shoots/${ plate }`);
 }))
 

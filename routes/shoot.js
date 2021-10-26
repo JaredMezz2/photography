@@ -76,8 +76,12 @@ router.get('/:id', catchAsync(async(req, res) => {
     const { id } = req.params;
     // find shoot in db
     const foundShoot = await Shoot.findOne({'plate': id});
-    // render corresponding page with passed in shoot
-    res.render('shoots/details', { foundShoot })
+    if (foundShoot) {
+        // render corresponding page with passed in shoot
+        res.render('shoots/details', { foundShoot })
+    } else {
+        res.render('shoots/setupShoot')
+    }
 }))
 
 router.post('/reserve', catchAsync(async(req, res) => {

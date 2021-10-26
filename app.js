@@ -67,10 +67,6 @@ app.use('/admin', adminRoutes);
 const contactRoutes = require('./routes/contact');
 app.use('/contact', contactRoutes);
 
-app.get('/throwError', (req, res) => {
-    throw new ExpressError('Error thrown from custom page', 420);
-})
-
 // final route catch
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));

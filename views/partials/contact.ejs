@@ -31,11 +31,11 @@
     </div>
 </div>
 
-<script src="https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></script>
-<!--<script src="https://www.google.com/recaptcha/api.js?render=6LeqJfEfAAAAAA2CUDsHd3noXjKZIQwdvXIeKnij"></script>-->
+<!--<script src="https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></script>-->
+<script src="https://www.google.com/recaptcha/api.js?render=6LeqJfEfAAAAAA2CUDsHd3noXjKZIQwdvXIeKnij"></script>
 <script>
     grecaptcha.ready(function() {
-        grecaptcha.execute('6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', {action: 'demo'})
+        grecaptcha.execute(`${process.env.RECAPTCHA_SITE_KEY}`, {action: 'demo'})
         // grecaptcha.execute('6LeqJfEfAAAAAA2CUDsHd3noXjKZIQwdvXIeKnij', {action: 'demo'})
             .then(function(token) {
                 $('#recaptchaToken').val(token);

@@ -19,7 +19,7 @@ router.post("/", catchAsync(async(req, res) => {
     const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECPATHCA_SECRET_KEY}&response=${req.body.token}`;
 
     axios.post(recaptchaUrl, {
-        secret: process.env.RECAPTCHA_SECRET_KEY,
+        // secret: process.env.RECAPTCHA_SECRET_KEY,
     })
         .then(function (response) {
             console.log('success');

@@ -21,7 +21,7 @@ router.post("/", catchAsync(async(req, res) => {
     axios.post(recaptchaUrl, {
     })
         .then(function (response) {
-            if (!response.success) {
+            if (response.success === false) {
                 req.flash('error', 'There was an error sending your email.');
                 res.redirect('/');
                 return false;

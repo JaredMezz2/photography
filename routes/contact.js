@@ -16,7 +16,8 @@ let transporter = nodemailer.createTransport({
 // Receive contact form info
 router.post("/", catchAsync(async(req, res) => {
     // Test recaptcha key to ensure verification
-    const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECPATHCA_SECRET_KEY}&response=${req.body.token}`;
+    // const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECPATHCA_SECRET_KEY}&response=${req.body.token}`;
+    const recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + process.env.RECPATHCA_SECRET_KEY + '&response=' + req.body.token;
 
     axios.post(recaptchaUrl, {
         // secret: process.env.RECAPTCHA_SECRET_KEY,

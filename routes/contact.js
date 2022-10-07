@@ -16,36 +16,23 @@ let transporter = nodemailer.createTransport({
 // Receive contact form info
 router.post("/", catchAsync(async(req, res) => {
     // Test recaptcha key to ensure verification
-    // const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECPATHCA_SECRET_KEY}&response=${req.body.token}`;
-    console.log(process.env.RECPATHCA_SECRET_KEY);
-    // console.log(process.env.GMAIL_PASS);
     const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${req.body.token}`;
 
     axios.post(recaptchaUrl, {
-        // secret: process.env.RECAPTCHA_SECRET_KEY,
     })
         .then(function (response) {
-            console.log('success');
-            console.log(response.success);
+            if (!response.success) {
+                req.flash('error', 'There was an error sending your email.');
+                res.redirect('/');
+                return false;
+            }
 
         })
         .catch(function (err) {
-            // console.log('err');
-            // console.log(err )
             req.flash('error', "There was an error sending your email.");
             res.redirect("/");
             return false;
         })
-    // axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECPATHCA_SECRET_KEY}&response=${req.body.token}`, function(req, res, next) {
-    //     console.log('in inner post');
-    //     console.log(res);
-    //     next();
-    // });
-
-    // fetch(recaptchaUrl, {method: 'POST'})
-    //     .then(response => console.log(response.json()))
-    //     .then(google_response => console.log(res.json({ google_response })))
-    //     .catch(error => console.log(res.json({ error })));
 
     // set mail options for multer upon contact request, pull details from body
     let mailOptions = {

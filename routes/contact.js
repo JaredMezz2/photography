@@ -23,6 +23,7 @@ router.post("/", catchAsync(async(req, res) => {
     })
         .then(function (response) {
             console.log('success');
+            console.log(response);
             // console.log(response);
 
         })

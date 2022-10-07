@@ -35,7 +35,7 @@
 <script src="https://www.google.com/recaptcha/api.js?render=6LeqJfEfAAAAAA2CUDsHd3noXjKZIQwdvXIeKnij"></script>
 <script>
     grecaptcha.ready(function() {
-        grecaptcha.execute('6LeqJfEfAAAAAA2CUDsHd3noXjKZIQwdvXIeKnij', {action: 'demo'})
+        grecaptcha.execute('6LeqJfEfAAAAAA2CUDsHd3noXjKZIQwdvXIeKnij', {action: 'submit'})
         // grecaptcha.execute('6LeqJfEfAAAAAA2CUDsHd3noXjKZIQwdvXIeKnij', {action: 'demo'})
             .then(function(token) {
                 $('#recaptchaToken').val(token);

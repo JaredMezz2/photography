@@ -18,6 +18,7 @@ router.post("/", catchAsync(async(req, res) => {
     // Test recaptcha key to ensure verification
     // const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECPATHCA_SECRET_KEY}&response=${req.body.token}`;
     console.log(process.env.RECPATHCA_SECRET_KEY);
+    console.log(process.env.GMAIL_PASS);
     const recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + process.env.RECPATHCA_SECRET_KEY + '&response=' + req.body.token;
 
     axios.post(recaptchaUrl, {

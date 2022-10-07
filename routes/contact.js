@@ -17,6 +17,7 @@ let transporter = nodemailer.createTransport({
 router.post("/", catchAsync(async(req, res) => {
     // Test recaptcha key to ensure verification
     // const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECPATHCA_SECRET_KEY}&response=${req.body.token}`;
+    console.log(process.env.RECPATHCA_SECRET_KEY);
     const recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + process.env.RECPATHCA_SECRET_KEY + '&response=' + req.body.token;
 
     axios.post(recaptchaUrl, {
@@ -24,7 +25,7 @@ router.post("/", catchAsync(async(req, res) => {
     })
         .then(function (response) {
             console.log('success');
-            console.log(response);
+            console.log(response.success);
 
         })
         .catch(function (err) {

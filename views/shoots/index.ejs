@@ -14,7 +14,7 @@
         <div class="row">
             <% shootsInfo.forEach(shoot => { %>
                 <div class="row position-relative text-center mobile-image-padding">
-                    <img src="<%= shoot.photo %>" alt="" class="p-0">
+                    <img src="<%= shoot.photo %>" alt="" class="p-0" loading="lazy">
                     <div class="bottom-text">
                         <a href='/shoots/<%= shoot.plate %>'><h1 class="shootCaption"><%= shoot.plate %></h1></a>
                     </div>
@@ -29,7 +29,7 @@
                <% shootsInfo.forEach((shoot, index) => {
                if (index < shootsInfo.length / 3) { %>
                    <div class="row position-relative text-center">
-                       <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+                       <img src="<%= shoot.photo %>" class="<%= index %>>" alt="" loading="lazy">
                        <div class="bottom-text">
                            <a href='/shoots/<%= shoot.plate %>'><h3 class="shootCaption"><%= shoot.plate %></h3></a>
                        </div>
@@ -41,7 +41,7 @@
                <% shootsInfo.forEach((shoot, index) => {
                if ((shootsInfo.length / 3) <= index && index < ((shootsInfo.length / 3) * 2)) { %>
                    <div class="row position-relative text-center">
-                       <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+                       <img src="<%= shoot.photo %>" class="<%= index %>>" alt="" loading="lazy">
                        <div class="bottom-text">
                            <a href='/shoots/<%= shoot.plate %>'><h3 class="shootCaption"><%= shoot.plate %></h3></a>
                        </div>
@@ -53,7 +53,7 @@
                <% shootsInfo.forEach((shoot, index) => {
                if (index >= ((shootsInfo.length / 3) * 2)) { %>
                    <div class="row position-relative text-center">
-                       <img src="<%= shoot.photo %>" class="<%= index %>>" alt="">
+                       <img src="<%= shoot.photo %>" class="<%= index %>>" alt="" loading="lazy">
                        <div class="bottom-text">
                            <a href='/shoots/<%= shoot.plate %>'><h3 class="shootCaption"><%= shoot.plate %></h3></a>
                        </div>

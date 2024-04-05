@@ -1,0 +1,69 @@
+<%- include('../partials/head')%>
+<%- include('../partials/navbar')%>
+<%- include('../partials/plateSearch')%>
+<div class="container-fluid p-0 body-container">
+    <!-- Header Section -->
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center p-3 m-0">Recent Events</h1>
+        </div>
+    </div>
+    <!-- Image Gallary -->
+    <!-- Mobile Devices -->
+    <div class="d-lg-none">
+        <div class="row">
+            <% eventsInfo.forEach(event => { %>
+                <div class="row position-relative text-center mobile-image-padding">
+                    <img src="<%= event.photo %>" alt="" class="p-0" loading="lazy">
+                    <div class="bottom-text">
+                        <a href='/events/<%= event.name %>'><h1 class="shootCaption"><%= event.name %></h1></a>
+                    </div>
+                </div>
+            <% })%>
+        </div>
+    </div>
+    <!-- Desktop -->
+    <div class="d-none d-lg-block">
+        <div class="image-row">
+            <div class="image-col-3">
+                <% eventsInfo.forEach((event, index) => {
+                if (index < eventsInfo.length / 3) { %>
+                    <div class="row position-relative text-center">
+                        <img src="<%= event.photo %>" class="<%= index %>>" alt="" loading="lazy">
+                        <div class="bottom-text">
+                            <a href='/events/<%= event.name %>'><h3 class="shootCaption"><%= event.name %></h3></a>
+                        </div>
+                    </div>
+                <% }
+                }) %>
+            </div>
+            <div class="image-col-3">
+                <% eventsInfo.forEach((event, index) => {
+                if ((eventsInfo.length / 3) <= index && index < ((eventsInfo.length / 3) * 2)) { %>
+                    <div class="row position-relative text-center">
+                        <img src="<%= event.photo %>" class="<%= index %>>" alt="" loading="lazy">
+                        <div class="bottom-text">
+                            <a href='/events/<%= event.name %>'><h3 class="shootCaption"><%= event.name %></h3></a>
+                        </div>
+                    </div>
+                <% }
+                }) %>
+            </div>
+            <div class="image-col-3">
+                <% eventsInfo.forEach((event, index) => {
+                if (index >= ((eventsInfo.length / 3) * 2)) { %>
+                    <div class="row position-relative text-center">
+                        <img src="<%= event.photo %>" class="<%= index %>>" alt="" loading="lazy">
+                        <div class="bottom-text">
+                            <a href='/events/<%= event.event %>'><h3 class="shootCaption"><%= event.event %></h3></a>
+                        </div>
+                    </div>
+                <% }
+                }) %>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<%- include('../partials/foot')%>

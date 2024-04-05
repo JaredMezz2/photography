@@ -61,6 +61,9 @@ app.get("/", (req, res) => {
 const shootRoutes = require('./routes/shoot');
 app.use('/shoots', shootRoutes);
 
+const eventRoutes = require('./routes/event');
+app.use('/events', eventRoutes);
+
 const adminRoutes = require('./routes/admin');
 app.use('/admin', adminRoutes);
 

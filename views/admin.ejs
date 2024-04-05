@@ -10,11 +10,11 @@
                         <h1>Total Shots</h1>
                         <h3><%= allShoots.length %></h3>
                     </div>
-                    <div class="col-12 admin-panel admin-panel-mobile overflow-scroll">
+                    <div class="col-12 admin-panel admin-panel-mobile overflow-scroll" style="height: 500px;">
                         <h1 class="text-center p-1">Client List</h1>
                         <ul class="list-group list-group-flush">
                             <% allShoots.forEach(shoot => { %>
-                                <li class="list-group-item"> <%= shoot.plate %> </li>
+                                <li class="list-group-item"><a href="/shoots/<%= shoot.plate%>" target="_blank" style="text-decoration: none;"></a> <%= shoot.plate %> </li>
                             <% })%>
                         </ul>
                     </div>

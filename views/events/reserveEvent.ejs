@@ -1,0 +1,18 @@
+<form action="/events/reserve" method="POST" name="submit" class="h-100 d-flex flex-column justify-content-around p-3 needs-validation" novalidate>
+    <h1 class="text-center">Reserve Page</h1>
+    <div class="section">
+        <div class="form-row">
+            <div class="input-group input-group-lg">
+                <span class="input-group-text font-weight-bold" id="name">Name: </span>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="input-group input-group-lg">
+                <span class="input-group-text font-weight-bold" id="date">Date: </span>
+                <input type="date" class="form-control" name="date" id="date" placeholder="Date" required>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-outline-dark btn-lg mt-3">Submit</button>
+</form>

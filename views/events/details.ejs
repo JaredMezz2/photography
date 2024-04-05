@@ -6,17 +6,17 @@
     <!-- Header Section -->
     <div class="row">
         <div class="col text-center p-3">
-            <h1 class="m-0">Plate: <%= foundShoot.plate %></h1>
-            <h3 class="m-0">Date: <%= foundShoot.date %></h3>
+            <h1 class="m-0">Name: <%= foundEvent.name %></h1>
+            <h3 class="m-0">Date: <%= foundEvent.date %></h3>
         </div>
     </div>
     <!-- Mobile Formatting -->
     <div class="d-lg-none">
         <div class="row">
             <div class="col-12 p-0">
-                <% if (foundShoot.photos.length > 0) { %>
-                    <% foundShoot.photos.forEach (photo => { %>
-                        <img class="img-fluid mobile-image-padding" src="<%= photo.url %>" loading="lazy">
+                <% if (foundEvent.photos.length > 0) { %>
+                    <% foundEvent.photos.forEach (photo => { %>
+                        <img class="img-fluid mobile-image-padding" src="<%= photo.url %>" alt="Card image cap">
                     <% }) %>
                 <% } else { %>
                     <div class="container-fluid">
@@ -30,27 +30,27 @@
     </div>
     <!-- Desktop Formatting -->
     <div class="d-none d-lg-block">
-        <% if (foundShoot.photos.length > 0) { %>
+        <% if (foundEvent.photos.length > 0) { %>
             <div class="image-row">
                 <div class="image-col d-flex flex-column justify-content-center">
-                    <% foundShoot.photos.forEach((photo, index) => {
-                    if (index < foundShoot.photos.length / 2) { %>
-                        <img src="<%= photo.url %>" alt="" class="1" loading="lazy">
+                    <% foundEvent.photos.forEach((photo, index) => {
+                    if (index < foundEvent.photos.length / 2) { %>
+                        <img src="<%= photo.url %>" alt="" class="1">
                     <% }
                     })%>
                 </div>
                 <div class="image-col d-flex flex-column justify-content-center">
-                    <% foundShoot.photos.forEach((photo, index) => {
-                    if (index >= foundShoot.photos.length / 2) { %>
-                        <img src="<%= photo.url %>" alt="" class="2" loading="lazy">
+                    <% foundEvent.photos.forEach((photo, index) => {
+                    if (index >= foundEvent.photos.length / 2) { %>
+                        <img src="<%= photo.url %>" alt="" class="2">
                     <% }
                     })%>
                 </div>
             </div>
         <% } else { %>
             <div class="container-fluid">
-                    <h1>Images coming soon</h1>
-                    <h3>Check back in 24hr!</h3>
+                <h1>Images coming soon</h1>
+                <h3>Check back in 24hr!</h3>
             </div>
         <% } %>
     </div>

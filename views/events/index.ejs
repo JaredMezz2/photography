@@ -14,7 +14,7 @@
         <div class="row">
             <% eventsInfo.forEach(event => { %>
                 <div class="row position-relative text-center mobile-image-padding">
-                    <img src="<%= event.photo %>" alt="" class="p-0" loading="lazy">
+                    <img src="<%= event.photo %>" alt="" class="p-0" >
                     <div class="bottom-text">
                         <a href='/events/<%= event.name %>'><h1 class="shootCaption"><%= event.name %></h1></a>
                     </div>
@@ -29,7 +29,7 @@
                 <% eventsInfo.forEach((event, index) => {
                 if (index < eventsInfo.length / 3) { %>
                     <div class="row position-relative text-center">
-                        <img src="<%= event.photo %>" class="<%= index %>>" alt="" loading="lazy">
+                        <img src="<%= event.photo %>" class="<%= index %>>" alt="" >
                         <div class="bottom-text">
                             <a href='/events/<%= event.name %>'><h3 class="shootCaption"><%= event.name %></h3></a>
                         </div>
@@ -41,7 +41,7 @@
                 <% eventsInfo.forEach((event, index) => {
                 if ((eventsInfo.length / 3) <= index && index < ((eventsInfo.length / 3) * 2)) { %>
                     <div class="row position-relative text-center">
-                        <img src="<%= event.photo %>" class="<%= index %>>" alt="" loading="lazy">
+                        <img src="<%= event.photo %>" class="<%= index %>>" alt="" >
                         <div class="bottom-text">
                             <a href='/events/<%= event.name %>'><h3 class="shootCaption"><%= event.name %></h3></a>
                         </div>
@@ -53,7 +53,7 @@
                 <% eventsInfo.forEach((event, index) => {
                 if (index >= ((eventsInfo.length / 3) * 2)) { %>
                     <div class="row position-relative text-center">
-                        <img src="<%= event.photo %>" class="<%= index %>>" alt="" loading="lazy">
+                        <img src="<%= event.photo %>" class="<%= index %>>" alt="" >
                         <div class="bottom-text">
                             <a href='/events/<%= event.event %>'><h3 class="shootCaption"><%= event.event %></h3></a>
                         </div>

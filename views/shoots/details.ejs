@@ -16,7 +16,7 @@
             <div class="col-12 p-0">
                 <% if (foundShoot.photos.length > 0) { %>
                     <% foundShoot.photos.forEach (photo => { %>
-                        <img class="img-fluid mobile-image-padding" src="<%= photo.url %>" loading="lazy">
+                        <img class="img-fluid mobile-image-padding" src="<%= photo.url %>" >
                     <% }) %>
                 <% } else { %>
                     <div class="container-fluid">
@@ -35,14 +35,14 @@
                 <div class="image-col d-flex flex-column justify-content-center">
                     <% foundShoot.photos.forEach((photo, index) => {
                     if (index < foundShoot.photos.length / 2) { %>
-                        <img src="<%= photo.url %>" alt="" class="1" loading="lazy">
+                        <img src="<%= photo.url %>" alt="" class="1" >
                     <% }
                     })%>
                 </div>
                 <div class="image-col d-flex flex-column justify-content-center">
                     <% foundShoot.photos.forEach((photo, index) => {
                     if (index >= foundShoot.photos.length / 2) { %>
-                        <img src="<%= photo.url %>" alt="" class="2" loading="lazy">
+                        <img src="<%= photo.url %>" alt="" class="2" >
                     <% }
                     })%>
                 </div>

@@ -15,6 +15,9 @@ let transporter = nodemailer.createTransport({
 });
 // Receive contact form info
 router.post("/", catchAsync(async(req, res) => {
+    // Temporarily disable emails
+    return;
+
     // Test recaptcha key to ensure verification
     const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${req.body.token}`;
 
